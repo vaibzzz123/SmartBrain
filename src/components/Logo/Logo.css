@@ -1,0 +1,8 @@
+.Tilt {
+    background: linear-gradient(to right, rgb(12, 106, 120), rgb(57, 161, 130));
+}
+
+.photo {
+    display: 'block';
+    padding-top: 10px;
+}
