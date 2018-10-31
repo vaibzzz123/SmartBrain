@@ -1,3 +1,7 @@
+A web app built around an image recognition API that can detect faces in a photo. Front end built with React, backend built with Node and PostGreSQL.
+
+To use this, make sure you have node/npm installed on your computer. Then clone the repository, and in the directory, enter `npm install` in the terminal to get the dependencies. Finally, enter `npm start` to start the web server for the app. Default place to access is localhost:3000 on your browser.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
