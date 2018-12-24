@@ -4,6 +4,8 @@ The image recognition API used is Clarifai: https://clarifai.com/. You will need
 
 To use this, make sure you have node/npm installed on your computer. Then clone the repository, and in the directory, enter `npm install` in the terminal to get the dependencies. Finally, enter `npm start` to start the web server for the app. Default place to access is localhost:3000 on your browser.
 
+Backend/database source code is available at https://github.com/vaibzzz123/SmartBrain-API
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
