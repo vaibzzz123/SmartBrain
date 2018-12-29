@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 import 'tachyons';
 import './App.css';
-import apiKeys from './keys.js' //put your own file for API key here, or put the key directly down below
 import Navigation from './components/Navigation/Navigation.js';
 import Logo from './components/Logo/Logo.js';
 import Rank from './components/Rank/Rank.js';
@@ -11,11 +9,6 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition.js'
 import SignIn from './components/SignIn/SignIn.js'
 import Register from './components/Register/Register.js'
-
-
-const app = new Clarifai.App({
-  apiKey: apiKeys.clarifaiKey //You can put it here as well if you'd like
-});
 
 const particleOptions = {
   particles: {
@@ -90,8 +83,15 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input).then(
-      response => {
+    fetch('http://localhost:3001/imageurl', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        input: this.state.input
+      })
+    })
+    .then(response => response.json())
+      .then(response => {
         if (response) {
           fetch('http://localhost:3001/image', {
             method: 'put',
@@ -99,7 +99,8 @@ class App extends Component {
             body: JSON.stringify({
               id: this.state.user.id
             })
-          }).then(response => response.json())
+          })
+            .then(response => response.json())
             .then(count => {
               this.setState(Object.assign(this.state.user, { entries: count }))
             })
