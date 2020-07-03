@@ -10,6 +10,8 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition.js'
 import SignIn from './components/SignIn/SignIn.js'
 import Register from './components/Register/Register.js'
 
+const apiUrl = process.env.REACT_APP_API_URL
+
 const particleOptions = {
   particles: {
     number: {
@@ -83,7 +85,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch('http://localhost:3001/imageurl', {
+    fetch(apiUrl + '/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -93,7 +95,7 @@ class App extends Component {
     .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3001/image', {
+          fetch(apiUrl + '/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -1,5 +1,7 @@
 import React from 'react';
 
+const apiUrl = process.env.REACT_APP_API_URL
+
 class Register extends React.Component {
     constructor(props) {
         super();
@@ -23,8 +25,7 @@ class Register extends React.Component {
     }
 
     onSubmitSignin = () => {
-        console.log(this.state);
-        fetch('http://localhost:3001/register', {
+        fetch(apiUrl + '/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
