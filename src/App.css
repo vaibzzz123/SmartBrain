@@ -1,17 +1,30 @@
-.App {
-  text-align: center;
-}
+/* Comments below added by ChatGPT to explain code after fixing */
 
-.center {
-  display: flex;
-  justify-content: center;
-}
-
-.particles {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-}
+/* Ensures the <html> and <body> elements take up the full height of the viewport,
+   removing any default margin and padding which could interfere with our layout. */
+   html, body {
+    height: 100%; /* Sets the height of the html and body to fully occupy the viewport height. */
+    margin: 0;    /* Removes the default margin that browsers apply. */
+    padding: 0;   /* Removes the default padding that browsers apply. */
+  }
+  
+  /* The #root div is the root element where your React app is mounted.
+     Ensuring it takes the full viewport height allows for consistent layout management. */
+  #root, .App {
+    min-height: 100vh; /* Ensures that the App occupies at least the minimum height of the viewport. */
+    display: flex;     /* Establishes a flex container for better alignment and distribution of child elements. */
+    flex-direction: column; /* Aligns children elements in a column, stacking them vertically. */
+    text-align: center; /* Centers the text of all child elements within the App. Useful for aligning content in the center. */
+  }
+  
+  /* Styles for the particles.js container, making it fill the entire screen
+     and positioning it behind other content using z-index. */
+  .particles {
+    position: fixed; /* Fixes the position of the particles effect to the viewport, so it doesn't scroll with the page. */
+    top: 0;    /* Aligns the top edge of the particles container with the top of the viewport. */
+    right: 0;  /* Aligns the right edge of the particles container with the right of the viewport. */
+    bottom: 0; /* Aligns the bottom edge of the particles container with the bottom of the viewport. */
+    left: 0;   /* Aligns the left edge of the particles container with the left of the viewport. */
+    z-index: -1; /* Places the particles effect behind other content, ensuring it doesn't interfere with interaction. */
+  }
+  
