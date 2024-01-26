@@ -20,7 +20,7 @@ class SignIn extends React.Component {
     }
 
     onSubmitSignin = () => {
-        console.log(apiUrl)
+        // console.log(apiUrl)
         fetch(apiUrl + '/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},

@@ -62,15 +62,14 @@ class App extends Component {
 
   calculateFaceLocation = (data) => {
     //TODO add error handling and multiple face detection
-    const clarifaiFace = data;
     const image = document.getElementById('inputImage');
     const width = Number(image.width);
     const height = Number(image.height);
     return {
-      leftCol: clarifaiFace.left_col * width,
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - (clarifaiFace.right_col * width),
-      bottomRow: height - (clarifaiFace.bottom_row * height)
+      leftCol: data.left_col * width,
+      topRow: data.top_row * height,
+      rightCol: width - (data.right_col * width),
+      bottomRow: height - (data.bottom_row * height)
     }
   }
 
@@ -104,8 +103,8 @@ class App extends Component {
             })
           })
             .then(response => response.json())
-            .then(count => {
-              this.setState(Object.assign(this.state.user, { entries: count }))
+            .then(response => {
+              this.setState(Object.assign(this.state.user, { entries: response.entries }))
             })
             .catch(console.log)
         }
@@ -141,7 +140,7 @@ class App extends Component {
                 onInputChange={this.onInputChange}
                 onButtonSubmit={this.onButtonSubmit}
               />
-              <FaceRecognition box={box} imageUrl={imageUrl} />
+              <FaceRecognition imageUrl={imageUrl} {...box} />
             </div>
             : (
               route === 'signin'
