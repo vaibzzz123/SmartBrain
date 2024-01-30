@@ -1,0 +1,1 @@
+docker stop $(docker ps | grep smartbrain | awk '{print $1}')
